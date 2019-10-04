@@ -1,0 +1,7 @@
+function [F,D,P,M,V,L] = sfieldsgrabber(varargin)
+    
+    for i=1:length(varargin)
+        [F{i},D{i},P{1},M{1},V{1},L{1}] = neurondataplot(varargin{i});
+    end
+        
+end
