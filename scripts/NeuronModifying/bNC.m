@@ -1,14 +1,17 @@
 %batch Neuron Creator
-%e.g. mS = bNC(rA,fullfile(wA,'S'),i,'S','scaling',i,'timeOne',true);
+%masterN = bNC(readPath,fullfile(writePathBase,method),curveRange,method)
 %readPath = 'E:\Julian\Arbors as they were sent\Basal'
-%writePathBase = 'E:\Julian\OriginalNew3\';
+%writePathBase = 'E:\Julian\Rediscovery_9-7-2021\Neurons'
 %curveRange = 0:0.25:2;
-%method = 'W';
+%method = 'W';  %see pNR for methods
 
 % r = 'E:\Julian\FractalNeurons\37_0005_Special\Basal';
 % w = 'E:\Julian\FractalNeurons\37_0005_Special\Results';
 % rA = 'E:\Julian\FractalNeurons\NeuronOBJs\Basal';
 % wA = 'E:\Julian\FractalNeurons\createNeurons';
+
+%old confusing, but probably works
+%e.g. mS = bNC(rA,fullfile(wA,'S'),i,'S','scaling',i,'timeOne',true);
 
 
 function masterN = bNC(readPath,writePathBase,curveRange,method,varargin)
@@ -34,16 +37,8 @@ parse(p,varargin{:});
 [~,upFolder]=fileparts(readPath); %upfolder should be the folder you are in.  Either 'Basal' or 'Apical'
 
 writePath = fullfile(writePathBase,upFolder); 
-% curveRange = 0:0.25:2;
 scaling = p.Results.scaling;
-% method = 'original';
-% method = 'init';
-% method = 'allangles';
-% method = 'end';
-% method = 'I';
-% method = 'W';
-% method = 'P';
-% method = 'F';
+
 
 masterN = struct('name','','path','','data',[],'SLA',[],'VRM',[],'DM',[],'WL',[],'PL',[],'IL',[],'TL',[],'S',[]);
 [P,F] = openNeuronOBJS(readPath);%gets the file paths and file names of obj files
